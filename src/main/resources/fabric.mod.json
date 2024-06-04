@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "immersiveaircraft-patch",
+  "version": "${version}",
+  "name": "ImmersiveAircraft-patch",
+  "description": "",
+  "authors": [],
+  "contact": {
+    "repo": "ImmersiveAircraft-patch"
+  },
+  "license": "MIT",
+  "icon": "assets/immersiveaircraft-patch/icon.png",
+  "environment": "server",
+  "entrypoints": {
+    "main": [
+      "de.tomalbrc.immersiveaircraftpatch.ImmersiveAircraft_patch"
+    ]
+  },
+  "mixins": [
+    "immersiveaircraft-patch.mixins.json"
+  ],
+  "accessWidener": "immersiveaircraft-patch.accesswidener",
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}",
+    "immersive_aircraft": "*"
+  }
+}
