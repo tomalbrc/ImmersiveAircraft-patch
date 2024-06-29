@@ -4,13 +4,16 @@
   "package": "de.tomalbrc.immersiveaircraftpatch.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "AirplaneEntityMixin",
-    "EntityMixin",
+    "entity.model.BiplaneEntityMixin",
+    "entity.model.AirshipEntityMixin",
+    "entity.BiplaneEntityMixin",
+    "entity.EngineVehicleMixin",
+    "entity.EntityMixin",
+    "entity.InventoryVehicleEntityMixin",
+    "entity.VehicleEntityMixin",
+    "GeneratorMixin",
     "NetworkHandlerImplMixin",
-    "UtilMixin",
-    "VehicleEntityMixin"
-  ],
-  "client": [
+    "ServerGamePacketListenerImplMixin"
   ],
   "injectors": {
     "defaultRequire": 1

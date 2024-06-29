@@ -1,4 +1,4 @@
-package de.tomalbrc.immersiveaircraftpatch.mixin;
+package de.tomalbrc.immersiveaircraftpatch.mixin.entity.model;
 
 import de.tomalbrc.bil.api.AnimatedEntity;
 import de.tomalbrc.bil.core.holder.entity.EntityHolder;
@@ -6,7 +6,7 @@ import de.tomalbrc.bil.core.model.Model;
 import de.tomalbrc.bil.file.loader.BbModelLoader;
 import de.tomalbrc.immersiveaircraftpatch.impl.CustomModelHolder;
 import eu.pb4.polymer.virtualentity.api.attachment.EntityAttachment;
-import immersive_aircraft.entity.AirplaneEntity;
+import immersive_aircraft.entity.AirshipEntity;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.Level;
@@ -16,10 +16,10 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(AirplaneEntity.class)
-public abstract class AirplaneEntityMixin implements AnimatedEntity {
+@Mixin(AirshipEntity.class)
+public class AirshipEntityMixin implements AnimatedEntity {
     @Unique
-    private static final ResourceLocation ID = new ResourceLocation("iap:biplane");
+    private static final ResourceLocation ID = new ResourceLocation("iap:airship");
     @Unique
     private static final Model MODEL = BbModelLoader.load(ID);
 
@@ -27,8 +27,8 @@ public abstract class AirplaneEntityMixin implements AnimatedEntity {
     private CustomModelHolder holder;
 
     @Inject(remap = false, method = "<init>", at = @At("TAIL"))
-    void iap$onInit (EntityType entityType, Level world, boolean canExplodeOnCrash, CallbackInfo ci) {
-        AirplaneEntity _this = (AirplaneEntity)(Object)this;
+    void iap$onInit2(EntityType entityType, Level world, CallbackInfo ci) {
+        AirshipEntity _this = (AirshipEntity)(Object)this;
         this.holder = new CustomModelHolder(_this, MODEL);
         EntityAttachment.ofTicking(this.holder, _this);
     }
