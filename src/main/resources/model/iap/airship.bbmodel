@@ -1036,7 +1036,7 @@
 			"uuid": "3890aac7-1aa0-cabf-0afc-75f9daa3d78c",
 			"export": true,
 			"mirror_uv": false,
-			"isOpen": false,
+			"isOpen": true,
 			"locked": false,
 			"visibility": true,
 			"autouv": 0,
@@ -1164,10 +1164,10 @@
 	"animations": [
 		{
 			"uuid": "cdf1439a-fcca-caab-49a9-53f2ffc16625",
-			"name": "s2",
+			"name": "a2",
 			"loop": "loop",
 			"override": false,
-			"length": 0,
+			"length": 1,
 			"snapping": 24,
 			"selected": true,
 			"anim_time_update": "",
@@ -1175,26 +1175,6 @@
 			"start_delay": "",
 			"loop_delay": "",
 			"animators": {
-				"d2d6b783-1bb5-65fa-d525-3a9382c2b24d": {
-					"name": "controller",
-					"type": "bone",
-					"keyframes": [
-						{
-							"channel": "rotation",
-							"data_points": [
-								{
-									"x": "-variable.pressing_interpolated_z * 30",
-									"y": "0",
-									"z": "-variable.pressing_interpolated_x * 20"
-								}
-							],
-							"uuid": "607c7a1f-8d5f-59f3-d58c-d60e283cea55",
-							"time": 0,
-							"color": -1,
-							"interpolation": "linear"
-						}
-					]
-				},
 				"6fa30090-2283-6af0-2e46-25e4283dffe4": {
 					"name": "propeller",
 					"type": "bone",

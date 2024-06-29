@@ -20,7 +20,7 @@ public class CustomModelHolder extends CustomLivingEntityHolder {
     @Override
     protected void applyPose(Pose pose, DisplayWrapper display) {
         Matrix4f matrix4f;
-        var tr = new Transformation(pose.readOnlyTranslation().sub(0.f,0.6f,0.5f, new Vector3f()), pose.leftRotation(), pose.readOnlyScale().get(new Vector3f()), pose.rightRotation());
+        var tr = new Transformation(pose.readOnlyTranslation().sub(0.f,this.parent.getBbHeight()/2.f,0, new Vector3f()), pose.leftRotation(), pose.readOnlyScale().get(new Vector3f()), pose.rightRotation());
         matrix4f = tr.getMatrix();
 
         matrix4f

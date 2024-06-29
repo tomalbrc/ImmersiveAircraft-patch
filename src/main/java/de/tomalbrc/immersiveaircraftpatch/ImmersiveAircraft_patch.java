@@ -1,10 +1,13 @@
 package de.tomalbrc.immersiveaircraftpatch;
 
+import de.tomalbrc.bil.file.loader.BbModelLoader;
+import de.tomalbrc.immersiveaircraftpatch.mixin.entity.model.BiplaneEntityMixin;
 import eu.pb4.polymer.resourcepack.api.PolymerResourcePackUtils;
 import eu.pb4.sgui.api.gui.SimpleGui;
 import immersive_aircraft.entity.InventoryVehicleEntity;
 import immersive_aircraft.entity.inventory.slots.SlotDescription;
 import net.fabricmc.api.ModInitializer;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.Items;
@@ -12,6 +15,12 @@ import net.minecraft.world.item.Items;
 public class ImmersiveAircraft_patch implements ModInitializer {
     @Override
     public void onInitialize() {
+        BbModelLoader.load(ResourceLocation.tryParse("iap:airship"));
+        BbModelLoader.load(ResourceLocation.tryParse("iap:biplane"));
+        BbModelLoader.load(ResourceLocation.tryParse("iap:gyrodyne"));
+        BbModelLoader.load(ResourceLocation.tryParse("iap:quadrocopter"));
+        BbModelLoader.load(ResourceLocation.tryParse("iap:warship"));
+
         PolymerResourcePackUtils.addModAssets("immversive_aircraft");
         PolymerResourcePackUtils.markAsRequired();
     }
@@ -36,7 +45,7 @@ public class ImmersiveAircraft_patch implements ModInitializer {
         if (!boiler.isEmpty()) gui.setSlotRedirect(9*1, boiler.get(0).getSlot(vehicleEntity, vehicleEntity));
 
         var booster = vehicleEntity.getInventoryDescription().getSlots("booster");
-        gui.setSlotRedirect(9*3, booster.get(0).getSlot(vehicleEntity, vehicleEntity));
+        if (!booster.isEmpty()) gui.setSlotRedirect(9*3, booster.get(0).getSlot(vehicleEntity, vehicleEntity));
 
         var weapon = vehicleEntity.getInventoryDescription().getSlots("weapon");
         if (!weapon.isEmpty()) gui.setSlotRedirect(11, weapon.get(0).getSlot(vehicleEntity, vehicleEntity));

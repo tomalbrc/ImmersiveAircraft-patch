@@ -7,6 +7,7 @@ import de.tomalbrc.bil.file.loader.BbModelLoader;
 import de.tomalbrc.immersiveaircraftpatch.impl.CustomModelHolder;
 import eu.pb4.polymer.virtualentity.api.attachment.EntityAttachment;
 import immersive_aircraft.entity.AirshipEntity;
+import immersive_aircraft.entity.GyrodyneEntity;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.Level;
@@ -16,10 +17,10 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(AirshipEntity.class)
-public class AirshipEntityMixin implements AnimatedEntity {
+@Mixin(GyrodyneEntity.class)
+public class GyrodyneEntityMixin implements AnimatedEntity {
     @Unique
-    private static final ResourceLocation ID = new ResourceLocation("iap:airship");
+    private static final ResourceLocation ID = new ResourceLocation("iap:gyrodyne");
     @Unique
     private static final Model MODEL = BbModelLoader.load(ID);
 
@@ -28,7 +29,7 @@ public class AirshipEntityMixin implements AnimatedEntity {
 
     @Inject(remap = false, method = "<init>", at = @At("TAIL"))
     void iap$onInit(EntityType entityType, Level world, CallbackInfo ci) {
-        AirshipEntity _this = (AirshipEntity)(Object)this;
+        GyrodyneEntity _this = (GyrodyneEntity)(Object)this;
         this.holder = new CustomModelHolder(_this, MODEL);
         EntityAttachment.ofTicking(this.holder, _this);
     }
@@ -37,5 +38,4 @@ public class AirshipEntityMixin implements AnimatedEntity {
     public EntityHolder getHolder() {
         return this.holder;
     }
-
 }

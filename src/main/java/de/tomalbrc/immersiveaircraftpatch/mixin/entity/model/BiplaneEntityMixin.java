@@ -28,7 +28,7 @@ public class BiplaneEntityMixin implements AnimatedEntity {
     private CustomModelHolder holder;
 
     @Inject(remap = false, method = "<init>", at = @At("TAIL"))
-    void iap$onInit (EntityType entityType, Level world, CallbackInfo ci) {
+    void iap$onInit(EntityType entityType, Level world, CallbackInfo ci) {
         BiplaneEntity _this = (BiplaneEntity)(Object)this;
         this.holder = new CustomModelHolder(_this, MODEL);
         EntityAttachment.ofTicking(this.holder, _this);
